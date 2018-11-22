@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GinPlatform.NET-SDK", "GinPlatform.NET SDK\GinPlatform.NET-SDK.csproj", "{0B8ED8AF-4E98-4456-89F2-BCD4AFBA5677}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A8DE10D0-0B95-48E2-BA71-70AA7C5C398B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GinPlatform.NET-SDK.Model", "GinPlatform.NET-SDK.Model\GinPlatform.NET-SDK.Model.csproj", "{B039FD08-AB88-4C76-AEE6-C3C09A9783ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B8ED8AF-4E98-4456-89F2-BCD4AFBA5677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B8ED8AF-4E98-4456-89F2-BCD4AFBA5677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B8ED8AF-4E98-4456-89F2-BCD4AFBA5677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B8ED8AF-4E98-4456-89F2-BCD4AFBA5677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B039FD08-AB88-4C76-AEE6-C3C09A9783ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B039FD08-AB88-4C76-AEE6-C3C09A9783ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B039FD08-AB88-4C76-AEE6-C3C09A9783ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B039FD08-AB88-4C76-AEE6-C3C09A9783ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {483167CD-F732-4E9B-8419-3486CD6DBB46}
+	EndGlobalSection
+EndGlobal
