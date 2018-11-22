@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace GinPlatform.NET_SDK.Clients
         {
             SetAuthorizationHeader(apiKey);
             var nodesResponse = await httpClient.SendAsync(NodeRoutes.GetNodesList());
+            nodesResponse.EnsureSuccessStatusCode();
             var nodesJson = await nodesResponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Node>>(nodesJson);
         }
@@ -22,6 +24,7 @@ namespace GinPlatform.NET_SDK.Clients
         {
             SetAuthorizationHeader(apiKey);
             var nodeResponse = await httpClient.SendAsync(NodeRoutes.GetNodeDetails(nodeId));
+            nodeResponse.EnsureSuccessStatusCode();
             var nodeJson = await nodeResponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Node>(nodeJson);
         }
@@ -32,6 +35,7 @@ namespace GinPlatform.NET_SDK.Clients
             var requestMessage = NodeRoutes.GetCreateNode();
             requestMessage.Content = new StringContent(JsonConvert.SerializeObject(newNode));
             var nodeResponse = await httpClient.SendAsync(requestMessage);
+            nodeResponse.EnsureSuccessStatusCode();
             var nodeJson = await nodeResponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Node>(nodeJson);
         }

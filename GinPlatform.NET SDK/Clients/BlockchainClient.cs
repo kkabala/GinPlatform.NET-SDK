@@ -14,6 +14,7 @@ namespace GinPlatform.NET_SDK.Clients
         public async Task<IEnumerable<Blockchain>> GetAllBlockchains()
         {
             var blockchainsResponse = await httpClient.SendAsync(BlockchainRoutes.GetBlockchainsList());
+            blockchainsResponse.EnsureSuccessStatusCode();
             var blockchainsJson = await blockchainsResponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Blockchain>>(blockchainsJson);
         }
@@ -21,6 +22,7 @@ namespace GinPlatform.NET_SDK.Clients
         public async Task<Blockchain> GetBlockchainDetails(string blockchainId)
         {
             var blockchainDetailsResponse = await httpClient.SendAsync(BlockchainRoutes.GetBlockchainDetails(blockchainId));
+            blockchainDetailsResponse.EnsureSuccessStatusCode();
             var blockchainsDetailsJson = await blockchainDetailsResponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Blockchain>(blockchainsDetailsJson);
         }
