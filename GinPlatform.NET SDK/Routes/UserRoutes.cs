@@ -1,10 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace GinPlatform.NET_SDK.Routes
 {
-    class UserRoutes
+    public static class UserRoutes
     {
+        public static HttpRequestMessage GetCurrentUser()
+        {
+            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/user");
+        }
+
+        public static HttpRequestMessage GetTransactions(int pageNumber)
+        {
+            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/user/transactions?page={pageNumber}");
+        }
     }
 }

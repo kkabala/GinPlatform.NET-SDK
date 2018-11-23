@@ -16,6 +16,7 @@ namespace GinPlatform.NET_SDK.Routes
         {
             return GinPlatform.GIN_PLATFORM_URL + $"/nodes/{nodeId}";
         }
+
         public static HttpRequestMessage GetNodesList()
         {
             return new HttpRequestMessage(HttpMethod.Get, GetNodeRoute());
