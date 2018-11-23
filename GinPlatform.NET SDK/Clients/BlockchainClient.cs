@@ -11,12 +11,12 @@ namespace GinPlatform.NET_SDK.Clients
 {
     public class BlockchainClient : BaseClient
     {
-        public Task<IEnumerable<Blockchain>> GetAllBlockchains()
+        public Task<IEnumerable<Blockchain>> GetAll()
         {
             return GetApiData<IEnumerable<Blockchain>>(BlockchainRoutes.GetBlockchainsList());
         }
 
-        public Task<Blockchain> GetBlockchainDetails(string blockchainId)
+        public Task<Blockchain> GetDetails(string blockchainId)
         {
             return GetApiData<Blockchain>(BlockchainRoutes.GetBlockchainDetails(blockchainId));
         }

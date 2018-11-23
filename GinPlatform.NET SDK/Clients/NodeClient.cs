@@ -10,24 +10,34 @@ namespace GinPlatform.NET_SDK.Clients
 {
     public class NodeClient : BaseClient
     {
-        public Task<IEnumerable<Node>> GetAllNodes(string apiKey = null)
+        public Task<IEnumerable<Node>> GetAll(string apiKey = null)
         {
             return GetApiDataAuthorized<IEnumerable<Node>>(NodeRoutes.GetNodesList(), apiKey);
         }
 
-        public Task<Node> GetNodeDetails(string nodeId, string apiKey = null)
+        public Task<Node> GetDetails(string nodeId, string apiKey = null)
         {
             return GetApiDataAuthorized<Node>(NodeRoutes.GetNodeDetails(nodeId), apiKey);
         }
 
-        public Task<Node> CreateNode(NewNode newNode, string apiKey = null)
+        public Task<Node> Create(NewNode newNode, string apiKey = null)
         {
             return GetApiDataAuthorized<Node>(NodeRoutes.GetCreateNode(), newNode, apiKey);
         }
 
-        public async Task<bool> DeleteNode(string nodeId, string apiKey = null)
+        public async Task<bool> Delete(string nodeId, string apiKey = null)
         {
             return String.IsNullOrEmpty(await GetApiDataAuthorized<string>(NodeRoutes.GetDeleteNode(nodeId), apiKey));
+        }
+
+        public async Task<bool> Upgrade(string nodeId, string apiKey = null)
+        {
+            return String.IsNullOrEmpty(await GetApiDataAuthorized<string>(NodeRoutes.GetUpgradeNode(nodeId), apiKey));
+        }
+        
+        public async Task<bool> Downgrade(string nodeId, string apiKey = null)
+        {
+            return String.IsNullOrEmpty(await GetApiDataAuthorized<string>(NodeRoutes.GetUpgradeNode(nodeId), apiKey));
         }
     }
 }
