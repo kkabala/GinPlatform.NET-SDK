@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GinPlatform.NET_SDK.Model.User;
+using GinPlatform.NET_SDK.Models.User;
 
 namespace GinPlatform.NET_SDK.Clients.Interfaces
 {

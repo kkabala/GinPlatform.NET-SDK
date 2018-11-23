@@ -1,4 +1,4 @@
-﻿namespace GinPlatform.NET_SDK.Model.Node
+﻿namespace GinPlatform.NET_SDK.Models.Node
 {
     public class Ip
     {

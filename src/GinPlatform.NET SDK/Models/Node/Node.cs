@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GinPlatform.NET_SDK.Model.Node
+namespace GinPlatform.NET_SDK.Models.Node
 {
     public class Node
     {

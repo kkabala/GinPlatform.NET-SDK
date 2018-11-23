@@ -1,9 +1,9 @@
 ﻿using System;
-using GinPlatform.NET_SDK.Model.Node;
 using GinPlatform.NET_SDK.Routes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GinPlatform.NET_SDK.Clients.Interfaces;
+using GinPlatform.NET_SDK.Models.Node;
 
 namespace GinPlatform.NET_SDK.Clients
 {

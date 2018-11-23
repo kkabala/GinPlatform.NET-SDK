@@ -1,4 +1,4 @@
-﻿namespace GinPlatform.NET_SDK.Model.Blockchain
+﻿namespace GinPlatform.NET_SDK.Models.Blockchain
 {
     public class Exchange
     {

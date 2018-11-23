@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GinPlatform.NET_SDK.Model.User
+namespace GinPlatform.NET_SDK.Models.User
 {
     public class Transaction
     {

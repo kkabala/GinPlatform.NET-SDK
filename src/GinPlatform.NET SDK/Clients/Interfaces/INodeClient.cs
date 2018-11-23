@@ -1,7 +1,7 @@
 ﻿using System;
-using GinPlatform.NET_SDK.Model.Node;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GinPlatform.NET_SDK.Models.Node;
 
 namespace GinPlatform.NET_SDK.Clients.Interfaces
 {
