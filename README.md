@@ -1,5 +1,6 @@
 # GinPlatform.NET-SDK
 GinPlatform.NET SDK is a pack of c# wrappings around GinPlatform REST API: https://docs.ginplatform.io/
+The SDK covers all endpoint of the API.
 
 The whole magic lays in "Client" classes. Those are your starting point and the place where interaction with the platform API happens.
 For now the list of available clients (with functionalities) is as below:
