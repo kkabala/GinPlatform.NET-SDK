@@ -47,6 +47,7 @@ namespace GinPlatform.NET_SDK.Clients
         {
             SetAuthorizationHeader(apiKey);
             message.Content = new StringContent(JsonConvert.SerializeObject(httpRequestContent));
+            SetJsonContentType();
             return GetApiData<T>(message);
         }
 
