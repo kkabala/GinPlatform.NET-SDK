@@ -1,4 +1,5 @@
-﻿using GinPlatform.NET_SDK.Model.Node;
+﻿using System;
+using GinPlatform.NET_SDK.Model.Node;
 using GinPlatform.NET_SDK.Routes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace GinPlatform.NET_SDK.Clients
         public Task<Node> CreateNode(NewNode newNode, string apiKey = null)
         {
             return GetApiDataAuthorized<Node>(NodeRoutes.GetCreateNode(), newNode, apiKey);
+        }
+
+        public async Task<bool> DeleteNode(string nodeId, string apiKey = null)
+        {
+            return String.IsNullOrEmpty(await GetApiDataAuthorized<string>(NodeRoutes.GetDeleteNode(nodeId), apiKey));
         }
     }
 }
