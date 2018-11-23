@@ -2,7 +2,7 @@
 
 namespace GinPlatform.NET_SDK.Routes
 {
-    public static class NodeRoutes
+    internal static class NodeRoutes
     {
         private static string GetNodeRoute()
         {
@@ -14,32 +14,32 @@ namespace GinPlatform.NET_SDK.Routes
             return GinPlatform.GIN_PLATFORM_URL + $"/nodes/{nodeId}";
         }
 
-        public static HttpRequestMessage GetNodesList()
+        internal static HttpRequestMessage GetNodesList()
         {
             return new HttpRequestMessage(HttpMethod.Get, GetNodeRoute());
         }
 
-        public static HttpRequestMessage GetNodeDetails(string nodeId)
+        internal static HttpRequestMessage GetNodeDetails(string nodeId)
         {
             return new HttpRequestMessage(HttpMethod.Get, GetNodeIdRoute(nodeId));
         }
 
-        public static HttpRequestMessage GetCreateNode()
+        internal static HttpRequestMessage GetCreateNode()
         {
             return new HttpRequestMessage(HttpMethod.Post, GetNodeRoute());
         }
 
-        public static HttpRequestMessage GetDeleteNode(string nodeId)
+        internal static HttpRequestMessage GetDeleteNode(string nodeId)
         {
             return new HttpRequestMessage(HttpMethod.Delete, GetNodeIdRoute(nodeId));
         }
 
-        public static HttpRequestMessage GetUpgradeNode(string nodeId)
+        internal static HttpRequestMessage GetUpgradeNode(string nodeId)
         {
             return new HttpRequestMessage(HttpMethod.Post, $"{GetNodeIdRoute(nodeId)}/upgrade");
         }
 
-        public static HttpRequestMessage GetDowngradeNode(string nodeId)
+        internal static HttpRequestMessage GetDowngradeNode(string nodeId)
         {
             return new HttpRequestMessage(HttpMethod.Post, $"{GetNodeIdRoute(nodeId)}/downgrade");
         }

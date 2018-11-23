@@ -2,14 +2,14 @@
 
 namespace GinPlatform.NET_SDK.Routes
 {
-    public static class BlockchainRoutes
+    internal static class BlockchainRoutes
     {
-        public static HttpRequestMessage GetBlockchainsList()
+        internal static HttpRequestMessage GetBlockchainsList()
         {
             return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/blockchains");
         }
 
-        public static HttpRequestMessage GetBlockchainDetails(string blockchainId)
+        internal static HttpRequestMessage GetBlockchainDetails(string blockchainId)
         {
             return new HttpRequestMessage(HttpMethod.Get, GinPlatform.GIN_PLATFORM_URL + $"/blockchains/{blockchainId}");
         }
