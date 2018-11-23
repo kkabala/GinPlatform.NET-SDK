@@ -1,14 +1,13 @@
 ﻿using System;
 using GinPlatform.NET_SDK.Model.Node;
 using GinPlatform.NET_SDK.Routes;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
+using GinPlatform.NET_SDK.Clients.Interfaces;
 
 namespace GinPlatform.NET_SDK.Clients
 {
-    public class NodeClient : BaseClient
+    public class NodeClient : BaseAuthorizedClient, INodeClient
     {
         public Task<IEnumerable<Node>> GetAll(string apiKey = null)
         {

@@ -1,10 +1,11 @@
 ﻿using GinPlatform.NET_SDK.Model.User;
 using GinPlatform.NET_SDK.Routes;
 using System.Threading.Tasks;
+using GinPlatform.NET_SDK.Clients.Interfaces;
 
 namespace GinPlatform.NET_SDK.Clients
 {
-    public class UserClient : BaseClient
+    public class UserClient : BaseAuthorizedClient, IUserClient
     {
         public Task<User> GetDetails(string apiKey = null)
         {

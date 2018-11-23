@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GinPlatform.NET_SDK.Model.Node
+﻿namespace GinPlatform.NET_SDK.Model.Node
 {
     public class Ip
     {

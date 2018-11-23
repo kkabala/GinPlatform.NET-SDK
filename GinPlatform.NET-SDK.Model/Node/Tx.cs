@@ -2,7 +2,7 @@
 {
     public class Tx
     {
-        public string id { get; set; }
-        public int index { get; set; }
+        public string Id { get; set; }
+        public int Index { get; set; }
     }
 }
