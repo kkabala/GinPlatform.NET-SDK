@@ -9,12 +9,12 @@ namespace GinPlatform.NET_SDK.Routes
     {
         private static string GetNodeRoute()
         {
-            return MainRoutes.GIN_PLATFORM_URL + "/nodes";
+            return GinPlatform.GIN_PLATFORM_URL + "/nodes";
         }
 
         private static string GetNodeIdRoute(string nodeId)
         {
-            return MainRoutes.GIN_PLATFORM_URL + $"/nodes/{nodeId}";
+            return GinPlatform.GIN_PLATFORM_URL + $"/nodes/{nodeId}";
         }
         public static HttpRequestMessage GetNodesList()
         {
