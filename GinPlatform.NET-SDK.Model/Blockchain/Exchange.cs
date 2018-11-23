@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GinPlatform.NET_SDK.Model.Blockchain
+﻿namespace GinPlatform.NET_SDK.Model.Blockchain
 {
     public class Exchange
     {
