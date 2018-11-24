@@ -5,12 +5,14 @@
     <RootNamespace>GinPlatform.NET_SDK</RootNamespace>
     <Version>0.2.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl>https://avatars3.githubusercontent.com/u/36369438?s=400&amp;v=4</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://github.com/kkabala/GinPlatform.NET-SDK</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/kkabala/GinPlatform.NET-SDK/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Krzysztof Kabała</Copyright>
     <Description>GinPlatform.NET SDK is a pack of c# wrappings around GinPlatform REST API: https://docs.ginplatform.io/
 The SDK covers all endpoints of the API. It enables you to do the same things as you can do using the API, but in more .NET object oriented way.</Description>
+    <Authors>Krzysztof Kabała</Authors>
+    <Company></Company>
   </PropertyGroup>
 
   <ItemGroup>
