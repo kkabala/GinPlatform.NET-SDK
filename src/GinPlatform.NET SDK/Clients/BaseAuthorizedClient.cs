@@ -29,11 +29,11 @@ namespace GinPlatform.NET_SDK.Clients
 
         private string GetApiKey(string passedApiKey)
         {
-            var key = String.IsNullOrEmpty(passedApiKey) ? GinPlatform.ApiKey : passedApiKey;
+            var key = String.IsNullOrEmpty(passedApiKey) ? GinPlatformSettings.ApiKey : passedApiKey;
             if (String.IsNullOrEmpty(key))
             {
                 throw new UnauthorizedAccessException(
-                    "The gincoin api key was not set up (neither directly, nor in the GinPlatform class");
+                    "The gincoin api key was not set up (neither directly, nor in the GinPlatformSettings class");
             }
 
             return key;

@@ -6,12 +6,12 @@ namespace GinPlatform.NET_SDK.Routes
     {
         internal static HttpRequestMessage GetCurrentUser()
         {
-            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/user");
+            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatformSettings.GinPlatformUrl}/user");
         }
 
         internal static HttpRequestMessage GetTransactions(int pageNumber)
         {
-            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/user/transactions?page={pageNumber}");
+            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatformSettings.GinPlatformUrl}/user/transactions?page={pageNumber}");
         }
     }
 }

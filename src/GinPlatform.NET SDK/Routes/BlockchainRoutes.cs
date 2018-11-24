@@ -6,12 +6,12 @@ namespace GinPlatform.NET_SDK.Routes
     {
         internal static HttpRequestMessage GetBlockchainsList()
         {
-            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatform.GIN_PLATFORM_URL}/blockchains");
+            return new HttpRequestMessage(HttpMethod.Get, $"{GinPlatformSettings.GinPlatformUrl}/blockchains");
         }
 
         internal static HttpRequestMessage GetBlockchainDetails(string blockchainId)
         {
-            return new HttpRequestMessage(HttpMethod.Get, GinPlatform.GIN_PLATFORM_URL + $"/blockchains/{blockchainId}");
+            return new HttpRequestMessage(HttpMethod.Get, GinPlatformSettings.GinPlatformUrl + $"/blockchains/{blockchainId}");
         }
     }
 }
