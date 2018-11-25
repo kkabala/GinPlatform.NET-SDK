@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -11,8 +12,7 @@ namespace GinPlatform.NET_SDK.Clients
         protected Task<T> GetApiDataAuthorized<T>(HttpRequestMessage message, object httpRequestContent, string apiKey = null)
         {
             SetAuthorizationHeader(apiKey);
-            message.Content = new StringContent(JsonConvert.SerializeObject(httpRequestContent));
-            SetJsonContentType();
+            message.Content = new StringContent(JsonConvert.SerializeObject(httpRequestContent), Encoding.UTF8, "application/json");
             return GetApiData<T>(message);
         }
 
@@ -20,11 +20,6 @@ namespace GinPlatform.NET_SDK.Clients
         {
             SetAuthorizationHeader(apiKey);
             return GetApiData<T>(message);
-        }
-
-        protected void SetJsonContentType()
-        {
-            httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
         }
 
         private string GetApiKey(string passedApiKey)
