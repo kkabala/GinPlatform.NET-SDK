@@ -23,7 +23,7 @@ namespace GinPlatform.NET_SDK.Models.Blockchain
         [JsonProperty("img")]
         public string Img { get; set; }
 
-        [JsonProperty("imgLarge")]
+        [JsonProperty("img_large")]
         public string ImgLarge { get; set; }
 
         [JsonProperty("website")]
