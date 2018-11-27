@@ -63,7 +63,7 @@ namespace GinPlatform.NET_SDK.Models.Node
         [JsonProperty("last_started_at")]
         public DateTime? LastStartedAt { get; set; }
 
-        [JsonProperty("Meta")]
+        [JsonProperty("meta")]
         public Dictionary<string,string> Meta { get; set; }
     }
 }
