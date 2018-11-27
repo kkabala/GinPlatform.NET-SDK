@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace GinPlatform.NET_SDK
+﻿namespace GinPlatform.NET_SDK
 {
     public static class GinPlatformSettings
     {
