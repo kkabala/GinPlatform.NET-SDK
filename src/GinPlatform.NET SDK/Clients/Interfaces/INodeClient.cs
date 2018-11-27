@@ -9,7 +9,7 @@ namespace GinPlatform.NET_SDK.Clients.Interfaces
     {
         Task<IEnumerable<Node>> GetAll(string apiKey = null);
         Task<Node> GetDetails(string nodeId, string apiKey = null);
-        Task<Node> Create(NewNode newNode, string apiKey = null);
+        Task<Node> Create(NodeCreationData nodeCreationData, string apiKey = null);
         Task<bool> Delete(string nodeId, string apiKey = null);
         Task<bool> Upgrade(string nodeId, string apiKey = null);
         Task<bool> Downgrade(string nodeId, string apiKey = null);

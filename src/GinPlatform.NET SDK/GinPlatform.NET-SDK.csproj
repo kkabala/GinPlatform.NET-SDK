@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>GinPlatform.NET_SDK</RootNamespace>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/36369438?s=400&amp;v=4</PackageIconUrl>
     <PackageProjectUrl>https://github.com/kkabala/GinPlatform.NET-SDK</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/kkabala/GinPlatform.NET-SDK/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Krzysztof Kabała</Copyright>

@@ -29,13 +29,13 @@ namespace GinPlatform.NET_SDK.Models.User
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
 
-        [JsonProperty("Hash")]
+        [JsonProperty("gash")]
         public string Hash { get; set; }
 
-        [JsonProperty("Currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("Civic")]
+        [JsonProperty("civic")]
         public bool Civic { get; set; }
 
         [JsonProperty("can_vote_tiers")]

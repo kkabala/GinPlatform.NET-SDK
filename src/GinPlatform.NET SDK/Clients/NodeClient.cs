@@ -19,9 +19,9 @@ namespace GinPlatform.NET_SDK.Clients
             return GetApiDataAuthorized<Node>(NodeRoutes.GetNodeDetails(nodeId), apiKey);
         }
 
-        public Task<Node> Create(NewNode newNode, string apiKey = null)
+        public Task<Node> Create(NodeCreationData nodeCreationData, string apiKey = null)
         {
-            return GetApiDataAuthorized<Node>(NodeRoutes.GetCreateNode(), newNode, apiKey);
+            return GetApiDataAuthorized<Node>(NodeRoutes.GetCreateNode(), nodeCreationData, apiKey);
         }
 
         public async Task<bool> Delete(string nodeId, string apiKey = null)
