@@ -37,7 +37,7 @@ namespace GinPlatform.NET_SDK.Models.Node
         public string Address { get; set; }
 
         [JsonProperty("port_status")]
-        public bool PortStatus { get; set; }
+        public bool? PortStatus { get; set; }
 
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
@@ -49,16 +49,19 @@ namespace GinPlatform.NET_SDK.Models.Node
         public DateTime UpdatedAt { get; set; }
 
         [JsonProperty("updated_mnstatus_at")]
-        public DateTime UpdatedMnStatusAt { get; set; }
+        public DateTime? UpdatedMnStatusAt { get; set; }
 
         [JsonProperty("updated_internal_status_at")]
         public object UpdatedInternalStatusAt { get; set; }
 
         [JsonProperty("updated_portstatus_at")]
-        public DateTime UpdatedPortStatusAt { get; set; }
+        public DateTime? UpdatedPortStatusAt { get; set; }
 
         [JsonProperty("updated_financials_at")]
-        public DateTime UpdatedFinancialsAt { get; set; }
+        public DateTime? UpdatedFinancialsAt { get; set; }
+
+        [JsonProperty("last_started_at")]
+        public DateTime? LastStartedAt { get; set; }
 
         [JsonProperty("Meta")]
         public Dictionary<string,string> Meta { get; set; }
