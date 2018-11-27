@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace GinPlatform.NET_SDK.Models.Node
 {
-	public class NewNode
+	public class NodeCreationData
 	{
-		public NewNode(int dedicated, string blockchain, int collateral, string txid, Dictionary<string, string> meta = null)
+		public NodeCreationData(int dedicated, string blockchain, int collateral, string txid, Dictionary<string, string> meta = null)
 		{
 			Dedicated = dedicated;
 			Blockchain = blockchain;
@@ -12,10 +13,20 @@ namespace GinPlatform.NET_SDK.Models.Node
 			Txid = txid;
 			Meta = meta ?? new Dictionary<string, string>();
 		}
+
+        [JsonProperty("dedicated")]
 		public int Dedicated { get; }
+
+        [JsonProperty("blockchain")]
 		public string Blockchain { get; }
+
+        [JsonProperty("collateral")]
 		public int Collateral { get; }
+
+        [JsonProperty("txid")]
 		public string Txid { get; }
+
+        [JsonProperty("meta")]
 		public Dictionary<string, string> Meta { get; }
 	}
 }
