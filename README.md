@@ -11,7 +11,7 @@ For now the list of available clients (with functionalities) is as below:
 - NodeClient:
   - GetAll(string apiKey = null)
   - GetDetails(string nodeId, string apiKey = null)
-  - Create(NewNode newNode, string apiKey = null)
+  - Create(NodeCreationData nodeCreationData, string apiKey = null)
   - Delete(string nodeId, string apiKey = null)
   - Upgrade(string nodeId, string apiKey = null)
   - Downgrade(string nodeId, string apiKey = null)
