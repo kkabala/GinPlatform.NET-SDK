@@ -12,7 +12,7 @@ namespace GinPlatform.NET_SDK.Clients
             return GetApiDataAuthorized<User>(UserRoutes.GetCurrentUser(), apiKey);
         }
 
-        public Task<TransactionsList> GetTransactionsList(int pageNumber, string apiKey = null)
+        public Task<TransactionsList> GetTransactionsList(int pageNumber = 1, string apiKey = null)
         {
             return GetApiDataAuthorized<TransactionsList>(UserRoutes.GetTransactions(pageNumber), apiKey);
         }
