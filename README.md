@@ -15,6 +15,8 @@ For now the list of available clients (with functionalities) is as below:
   - Delete(string nodeId, string apiKey = null)
   - Upgrade(string nodeId, string apiKey = null)
   - Downgrade(string nodeId, string apiKey = null)
+  - Rebuild(string nodeId, string apiKey = null)
+  - GetRewards(string nodeId, int pageNumber = 1, string apiKey = null)
 - UserClient:
   - GetDetails(string apiKey = null)
   - GetTransactionsList(int pageNumber, string apiKey = null)
