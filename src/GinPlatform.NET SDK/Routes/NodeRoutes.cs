@@ -49,9 +49,9 @@ namespace GinPlatform.NET_SDK.Routes
             return new HttpRequestMessage(HttpMethod.Post, $"{GetNodeIdRoute(nodeId)}/rebuild");
         }
 
-        internal static HttpRequestMessage GetNodeRewards(string nodeId)
+        internal static HttpRequestMessage GetNodeRewards(string nodeId, int pageNumber)
         {
-            return new HttpRequestMessage(HttpMethod.Get, $"{GetNodeIdRoute(nodeId)}/rewards");
+            return new HttpRequestMessage(HttpMethod.Get, $"{GetNodeIdRoute(nodeId)}/rewards?page={pageNumber}");
         }
     }
 }

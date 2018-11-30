@@ -44,9 +44,9 @@ namespace GinPlatform.NET_SDK.Clients
             return String.IsNullOrEmpty(await GetApiDataAuthorized<string>(NodeRoutes.GetRebuildNode(nodeId), apiKey));
         }
 
-        public Task<RewardsList> GetRewards(string nodeId, string apiKey = null)
+        public Task<RewardsList> GetRewards(string nodeId, int pageNumber = 1, string apiKey = null)
         {
-            return GetApiDataAuthorized<RewardsList>(NodeRoutes.GetNodeRewards(nodeId), apiKey);
+            return GetApiDataAuthorized<RewardsList>(NodeRoutes.GetNodeRewards(nodeId, pageNumber), apiKey);
         }
     }
 }
