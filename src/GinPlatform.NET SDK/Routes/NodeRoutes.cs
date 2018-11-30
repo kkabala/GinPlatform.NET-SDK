@@ -43,5 +43,15 @@ namespace GinPlatform.NET_SDK.Routes
         {
             return new HttpRequestMessage(HttpMethod.Post, $"{GetNodeIdRoute(nodeId)}/downgrade");
         }
+
+        internal static HttpRequestMessage GetRebuildNode(string nodeId)
+        {
+            return new HttpRequestMessage(HttpMethod.Post, $"{GetNodeIdRoute(nodeId)}/rebuild");
+        }
+
+        internal static HttpRequestMessage GetNodeRewards(string nodeId)
+        {
+            return new HttpRequestMessage(HttpMethod.Get, $"{GetNodeIdRoute(nodeId)}/rewards");
+        }
     }
 }
