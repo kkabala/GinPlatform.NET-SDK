@@ -5,7 +5,7 @@ namespace GinPlatform.NET_SDK.Models.Node
 {
 	public class NodeCreationData
 	{
-		public NodeCreationData(int dedicated, string blockchain, int collateral, string txid, Dictionary<string, string> meta = null)
+		public NodeCreationData(bool dedicated, string blockchain, int collateral, string txid, Dictionary<string, string> meta = null)
 		{
 			Dedicated = dedicated;
 			Blockchain = blockchain;
@@ -15,7 +15,7 @@ namespace GinPlatform.NET_SDK.Models.Node
 		}
 
         [JsonProperty("dedicated")]
-		public int Dedicated { get; }
+		public bool Dedicated { get; }
 
         [JsonProperty("blockchain")]
 		public string Blockchain { get; }
