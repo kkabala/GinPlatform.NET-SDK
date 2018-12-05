@@ -63,6 +63,9 @@ namespace GinPlatform.NET_SDK.Models.Node
         [JsonProperty("last_started_at")]
         public DateTime? LastStartedAt { get; set; }
 
+        [JsonProperty("financials")]
+        public Financials Financials { get; set; }
+
         [JsonProperty("meta")]
         public Dictionary<string,string> Meta { get; set; }
     }
