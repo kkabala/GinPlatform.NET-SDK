@@ -1,80 +1,116 @@
-﻿using Newtonsoft.Json;
+﻿using GinPlatform.NET_SDK.Exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GinPlatform.NET_SDK.Clients
 {
-	public abstract class BaseClient : IDisposable
-	{
-		protected readonly HttpClient httpClient;
-		private static List<DateTime> apiRequestsTimes = new List<DateTime>();
+    public abstract class BaseClient : IDisposable
+    {
+        protected readonly HttpClient httpClient;
+        private static List<DateTime> apiRequestsTimes = new List<DateTime>();
 
-		protected BaseClient()
-		{
-			httpClient = new HttpClient();
-		}
+        protected BaseClient()
+        {
+            httpClient = new HttpClient();
+        }
 
-		protected async Task<T> GetApiData<T>(HttpRequestMessage requestMessage)
-		{
-			if (GinPlatformSettings.ProtectionFromBeingRateLimited)
-			{
-				await Task.Delay(GetTimeNeededToWaitToEvadeRateLimiting());
-			}
-			AddNewRequestTime();
-			var response = await httpClient.SendAsync(requestMessage);
-			response.EnsureSuccessStatusCode();
-			var jsonResponse = await response.Content.ReadAsStringAsync();
-			return JsonConvert.DeserializeObject<T>(jsonResponse);
-		}
+        protected async Task<T> GetApiData<T>(HttpRequestMessage requestMessage)
+        {
+            if (GinPlatformSettings.ProtectionFromBeingRateLimited)
+            {
+                await Task.Delay(GetTimeNeededToWaitToEvadeRateLimiting());
+            }
+            AddNewRequestTime();
+            var response = await httpClient.SendAsync(requestMessage);
+            await EnsureSuccessStatusCode(response);
 
-		private void AddNewRequestTime()
-		{
-			if (apiRequestsTimes.Count == Rules.MaxRequestsPerMinute)
-			{
-				apiRequestsTimes.RemoveAt(0);
-			}
-			apiRequestsTimes.Add(DateTime.Now);
-		}
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(jsonResponse);
+        }
 
-		private TimeSpan GetTimeNeededToWaitToEvadeRateLimiting()
-		{
-			var orderedApiRequestsTimes = apiRequestsTimes.OrderByDescending(m => m).ToList();
-			var actualTime = DateTime.Now;
+        private async Task EnsureSuccessStatusCode(HttpResponseMessage response)
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                return;
+            }
 
-			bool isMaxRequestsPerSecondRuleViolated = false;
-			TimeSpan theOldestRequestInPerSecondRule;
-			if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerSecond - 1)
-			{
-				theOldestRequestInPerSecondRule = actualTime.Subtract(orderedApiRequestsTimes
-					.Skip(Rules.MaxRequestsPerSecond - 2).First());
+            var content = await response.Content.ReadAsStringAsync();
+            response.Content?.Dispose();
 
-				isMaxRequestsPerSecondRuleViolated = theOldestRequestInPerSecondRule < TimeSpan.FromSeconds(1);
-			}
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new UnauthorizedException(content);
+            }
 
-			bool isMaxRequestsPerMinuteRuleViolated = false;
-			TimeSpan theOldestRequestInPerMinuteRule;
-			if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerMinute - 1)
-			{
-				theOldestRequestInPerMinuteRule = actualTime.Subtract(orderedApiRequestsTimes
-					.Skip(Rules.MaxRequestsPerMinute - 2).First());
+            if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                throw new ForbiddenException(content);
+            }
 
-				isMaxRequestsPerMinuteRuleViolated = theOldestRequestInPerMinuteRule < TimeSpan.FromMinutes(1);
-			}
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new NotFoundException(content);
+            }
 
-			var timeToWaitInMilliseconds = Math.Max(
-				isMaxRequestsPerSecondRuleViolated ? (TimeSpan.FromSeconds(1) - theOldestRequestInPerSecondRule).TotalMilliseconds : 0,
-				isMaxRequestsPerMinuteRuleViolated ? (TimeSpan.FromMinutes(1) - theOldestRequestInPerMinuteRule).TotalMilliseconds : 0);
+            if ((int)response.StatusCode >= 400 && (int)response.StatusCode < 500)
+            {
+                throw new NotFoundException(content);
+            }
 
-			return TimeSpan.FromMilliseconds(timeToWaitInMilliseconds);
+            throw new GinPlatformApiException(response.StatusCode, content);
+        }
 
-		}
+        private void AddNewRequestTime()
+        {
+            if (apiRequestsTimes.Count == Rules.MaxRequestsPerMinute)
+            {
+                apiRequestsTimes.RemoveAt(0);
+            }
+            apiRequestsTimes.Add(DateTime.Now);
+        }
 
-		public void Dispose()
-		{
-			httpClient?.Dispose();
-		}
-	}
+        private TimeSpan GetTimeNeededToWaitToEvadeRateLimiting()
+        {
+            var orderedApiRequestsTimes = apiRequestsTimes.OrderByDescending(m => m).ToList();
+            var actualTime = DateTime.Now;
+
+            bool isMaxRequestsPerSecondRuleViolated = false;
+            TimeSpan theOldestRequestInPerSecondRule;
+            if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerSecond - 1)
+            {
+                theOldestRequestInPerSecondRule = actualTime.Subtract(orderedApiRequestsTimes
+                    .Skip(Rules.MaxRequestsPerSecond - 2).First());
+
+                isMaxRequestsPerSecondRuleViolated = theOldestRequestInPerSecondRule < TimeSpan.FromSeconds(1);
+            }
+
+            bool isMaxRequestsPerMinuteRuleViolated = false;
+            TimeSpan theOldestRequestInPerMinuteRule;
+            if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerMinute - 1)
+            {
+                theOldestRequestInPerMinuteRule = actualTime.Subtract(orderedApiRequestsTimes
+                    .Skip(Rules.MaxRequestsPerMinute - 2).First());
+
+                isMaxRequestsPerMinuteRuleViolated = theOldestRequestInPerMinuteRule < TimeSpan.FromMinutes(1);
+            }
+
+            var timeToWaitInMilliseconds = Math.Max(
+                isMaxRequestsPerSecondRuleViolated ? (TimeSpan.FromSeconds(1) - theOldestRequestInPerSecondRule).TotalMilliseconds : 0,
+                isMaxRequestsPerMinuteRuleViolated ? (TimeSpan.FromMinutes(1) - theOldestRequestInPerMinuteRule).TotalMilliseconds : 0);
+
+            return TimeSpan.FromMilliseconds(timeToWaitInMilliseconds);
+
+        }
+
+        public void Dispose()
+        {
+            httpClient?.Dispose();
+        }
+    }
 }
