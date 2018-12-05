@@ -13,6 +13,7 @@ namespace GinPlatform.NET_SDK.Clients
     {
         protected readonly HttpClient httpClient;
         private static List<DateTime> apiRequestsTimes = new List<DateTime>();
+        static bool wasRateLimited = false;
 
         protected BaseClient()
         {
@@ -58,6 +59,12 @@ namespace GinPlatform.NET_SDK.Clients
                 throw new NotFoundException(content);
             }
 
+            if ((int)response.StatusCode == 429)
+            {
+                wasRateLimited = true;
+                throw new TooManyRequestsException();
+            }
+
             if ((int)response.StatusCode >= 400 && (int)response.StatusCode < 500)
             {
                 throw new NotFoundException(content);
@@ -77,6 +84,11 @@ namespace GinPlatform.NET_SDK.Clients
 
         private TimeSpan GetTimeNeededToWaitToEvadeRateLimiting()
         {
+            if (wasRateLimited)
+            {
+                wasRateLimited = false;
+                return TimeSpan.FromMinutes(1);
+            }
             var orderedApiRequestsTimes = apiRequestsTimes.OrderByDescending(m => m).ToList();
             var actualTime = DateTime.Now;
 
