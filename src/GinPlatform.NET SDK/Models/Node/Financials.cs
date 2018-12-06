@@ -9,13 +9,13 @@ namespace GinPlatform.NET_SDK.Models.Node
         public DateTime LastRewardAt { get; set; }
 
         [JsonProperty("rewards")]
-        public int Rewards { get; set; }
+        public double Rewards { get; set; }
 
         [JsonProperty("rewards_today")]
-        public int RewardsToday { get; set; }
+        public double RewardsToday { get; set; }
 
         [JsonProperty("rewards_month")]
-        public int RewardsMonth { get; set; }
+        public double RewardsMonth { get; set; }
 
         [JsonProperty("exits")]
         public double Exits { get; set; }
