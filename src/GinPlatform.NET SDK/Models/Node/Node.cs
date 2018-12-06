@@ -9,6 +9,9 @@ namespace GinPlatform.NET_SDK.Models.Node
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("blockchain")]
         public string Blockchain { get; set; }
 
