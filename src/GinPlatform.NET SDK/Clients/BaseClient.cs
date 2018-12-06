@@ -75,7 +75,7 @@ namespace GinPlatform.NET_SDK.Clients
 
         private void AddNewRequestTime()
         {
-            if (apiRequestsTimes.Count == Rules.MaxRequestsPerMinute)
+            if (apiRequestsTimes.Count == GinPlatformSettings.MaxRequestsPerMinute)
             {
                 apiRequestsTimes.RemoveAt(0);
             }
@@ -94,20 +94,20 @@ namespace GinPlatform.NET_SDK.Clients
 
             bool isMaxRequestsPerSecondRuleViolated = false;
             TimeSpan theOldestRequestInPerSecondRule;
-            if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerSecond - 1)
+            if (orderedApiRequestsTimes.Count >= GinPlatformSettings.MaxRequestsPerSecond - 1)
             {
                 theOldestRequestInPerSecondRule = actualTime.Subtract(orderedApiRequestsTimes
-                    .Skip(Rules.MaxRequestsPerSecond - 2).First());
+                    .Skip(GinPlatformSettings.MaxRequestsPerSecond - 2).First());
 
                 isMaxRequestsPerSecondRuleViolated = theOldestRequestInPerSecondRule < TimeSpan.FromSeconds(1);
             }
 
             bool isMaxRequestsPerMinuteRuleViolated = false;
             TimeSpan theOldestRequestInPerMinuteRule;
-            if (orderedApiRequestsTimes.Count >= Rules.MaxRequestsPerMinute - 1)
+            if (orderedApiRequestsTimes.Count >= GinPlatformSettings.MaxRequestsPerMinute - 1)
             {
                 theOldestRequestInPerMinuteRule = actualTime.Subtract(orderedApiRequestsTimes
-                    .Skip(Rules.MaxRequestsPerMinute - 2).First());
+                    .Skip(GinPlatformSettings.MaxRequestsPerMinute - 2).First());
 
                 isMaxRequestsPerMinuteRuleViolated = theOldestRequestInPerMinuteRule < TimeSpan.FromMinutes(1);
             }
