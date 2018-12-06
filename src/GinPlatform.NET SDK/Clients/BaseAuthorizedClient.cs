@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using GinPlatform.NET_SDK.Exceptions;
 using Newtonsoft.Json;
 
 namespace GinPlatform.NET_SDK.Clients
@@ -27,7 +28,7 @@ namespace GinPlatform.NET_SDK.Clients
             var key = String.IsNullOrEmpty(passedApiKey) ? GinPlatformSettings.ApiKey : passedApiKey;
             if (String.IsNullOrEmpty(key))
             {
-                throw new UnauthorizedAccessException(
+                throw new UnauthorizedException(
                     "The gincoin api key was not set up (neither directly, nor in the GinPlatformSettings class");
             }
 
