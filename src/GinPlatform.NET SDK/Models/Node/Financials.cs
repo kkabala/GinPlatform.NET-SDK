@@ -6,7 +6,7 @@ namespace GinPlatform.NET_SDK.Models.Node
     public class Financials
     {
         [JsonProperty("last_reward_at")]
-        public DateTime LastRewardAt { get; set; }
+        public DateTime? LastRewardAt { get; set; }
 
         [JsonProperty("rewards")]
         public double Rewards { get; set; }
