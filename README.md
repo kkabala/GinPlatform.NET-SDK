@@ -9,7 +9,17 @@ The whole magic lays in "Client" class. This is your starting point and the plac
 string apiKey = "...secret...";
 var client = new Client(apiKey);
 
-var listOfAllBlockchains = client.Blockchains.GetAll(); //Get all blockchains data from the API
+await client.Blockchains.GetAll(); //get blockchains list
+await client.Blockchains.GetById("gincoin") //get the gincoin blockchain
+
+await client.Nodes.GetAll() //get all my nodes
+await client.Nodes.GetById("replace-with-node-id") //get all my nodes
+await client.Nodes.Create(new NodeCreationData { Blockchain: "gincoin", Collateral: 1000, Txid: "tx-id-here", dedicated: true }) //create a node
+await client.Nodes.Update(new NodeUpdate("replace-with-node-id", new Dictionary<string, string>(){ { "key1": "value1" } }) //update a node
+await client.Nodes.Delete("replace-with-node-id") //delete a node
+
+await client.User.GetDetails() //get current user's details
+await client.User.GetTransactionsList() //get current user's billing transactions
 ```
   
 Apart from that you have "GinPlatformSettings" class where you can:
