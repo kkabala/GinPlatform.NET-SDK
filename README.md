@@ -1,6 +1,6 @@
 # GinPlatform.NET-SDK
 
-[![NuGet](https://img.shields.io/nuget/v/GinPlatform.NET-SDK.svg?maxAge=2592000)](https://www.nuget.org/packages/GinPlatform.NET-SDK/)
+[![NuGet](https://img.shields.io/nuget/v/GinPlatform.NET-SDK.svg)](https://www.nuget.org/packages/GinPlatform.NET-SDK/)
 
 GinPlatform.NET SDK is a pack of c# wrappings around GinPlatform REST API: https://docs.ginplatform.io/
 
