@@ -14,42 +14,12 @@ namespace GinPlatform.NET_SDK
         }
 
         private IBlockchainFacade blockchains;
-        public IBlockchainFacade Blockchains
-        {
-            get
-            {
-                if (blockchains == null)
-                {
-                    blockchains = new BlockchainFacade();
-                }
-                return blockchains;
-            }
-        }
+        public IBlockchainFacade Blockchains => blockchains ?? (blockchains = new BlockchainFacade());
 
         private INodeFacade nodes;
-        public INodeFacade Nodes
-        {
-            get
-            {
-                if (nodes == null)
-                {
-                    nodes = new NodeFacade(apiKey);
-                }
-                return nodes;
-            }
-        }
+        public INodeFacade Nodes => nodes ?? (nodes = new NodeFacade(apiKey));
 
         private IUserFacade user;
-        public IUserFacade User
-        {
-            get
-            {
-                if (user == null)
-                {
-                    user = new UserFacade(apiKey);
-                }
-                return user;
-            }
-        }
+        public IUserFacade User => user ?? (user = new UserFacade(apiKey));
     }
 }
