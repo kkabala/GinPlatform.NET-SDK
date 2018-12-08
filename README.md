@@ -31,7 +31,7 @@ Apart from that you have "GinPlatformSettings" class where you can:
   - Change GinPlatformUrl - not needed for now, but probably someday it'll be useful, for changing to stage/dev environment for example
 
 ```c#
-GinPlatformSettings.ProtectionFromBeingRateLimited = false;
+GinPlatformSettings.ProtectionFromBeingRateLimited = false; //to disable protection - definitely not recommended
 GinPlatformSettings.GinPlatformUrl = "some-test-gin-platform-url";
 
 GinPlatformSettings.MaxRequestsPerMinute = 20; // to limit
