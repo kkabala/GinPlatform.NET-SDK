@@ -7,6 +7,6 @@ namespace GinPlatform.NET_SDK.Facades.Interfaces
     public interface IUserFacade : IDisposable
     {
         Task<User> GetDetails();
-        Task<TransactionsList> GetTransactionsList(int pageNumber);
+        Task<TransactionsList> GetTransactionsList(int pageNumber = 1);
     }
 }
