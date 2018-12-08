@@ -5,7 +5,7 @@
         public static string GinPlatformUrl { get; set; }= "https://api.ginplatform.io";
 
 	    public static bool ProtectionFromBeingRateLimited { get; set; } = true;
-        private static int maxRequestsPerSecond = Rules.MAX_REQUESTS_PER_SECOND_API_THRESHOLD;
+        private static int maxRequestsPerSecond = Rules.MAX_REQUESTS_PER_SECOND_API_THRESHOLD / 2;
 
         public static int MaxRequestsPerSecond
         {
