@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>GinPlatform.NET_SDK</RootNamespace>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/36369438?s=400&amp;v=4</PackageIconUrl>
     <PackageProjectUrl>https://github.com/kkabala/GinPlatform.NET-SDK</PackageProjectUrl>
