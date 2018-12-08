@@ -39,6 +39,7 @@ GinPlatformSettings.MaxRequestsPerMinute = 20; // to limit
 GinPlatformSettings.MaxRequestsPerMinute = Rules.MAX_REQUESTS_PER_MINUTE_API_THRESHOLD; // to set max performance per minute
 
 GinPlatformSettings.MaxRequestsPerSecond = 1; // to limit
+//or
 GinPlatformSettings.MaxRequestsPerSecond = Rules.MAX_REQUESTS_PER_SECOND_API_THRESHOLD; // to set max performance per second
 ```
 
