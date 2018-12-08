@@ -3,7 +3,7 @@ GinPlatform.NET SDK is a pack of c# wrappings around GinPlatform REST API: https
 
 The SDK covers all endpoints of the API. It enables you to do the same things as you can do using the API, but in more .NET object oriented way.
 
-The whole magic lays in "Client" class. This is your starting point and the place where interaction with the platform API happens:
+The whole magic lays in the "Client" class. This is your starting point and the place where interaction with the GinPlatform API happens:
 
 ```C#
 string apiKey = "...secret...";
