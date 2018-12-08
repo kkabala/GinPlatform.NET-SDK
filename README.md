@@ -8,6 +8,9 @@ The whole magic lays in "Client" class. This is your starting point and the plac
 ```C#
 string apiKey = "...secret...";
 var client = new Client(apiKey);
+//or
+Client.ApiKey = "...secret..." //this way you don't have to insert the ApiKey explicitly, the ApiKey is going to be provided automatically to every 'Client' instance
+var client = new Client();
 
 await client.Blockchains.GetAll(); //get blockchains list
 await client.Blockchains.GetById("gincoin"); //get the gincoin blockchain
@@ -26,5 +29,17 @@ Apart from that you have "GinPlatformSettings" class where you can:
   - Disable protection from being rate limited (ProtectionFromBeingRateLimited property) - it's enabled by default. It protects you from being rate limited as when you reach requests limit and trying to send a rule breaking request, the SDK calculates and waits required time to send the request to GinPlatform. Remember that it bases on request sending time, not the time of receiving it by the GinPlatform, therefore with the protection you won't achieve maximum possible requests per second/minute ratio, but you can be sure that you won't be rate limited.
   - Decrease/Increase your requests per second/minute limit - but the SDK won't allow you to set higher value than API limits. Requests per second are by default limited by half comparing to the API limit
   - Change GinPlatformUrl - not needed for now, but probably someday it'll be useful, for changing to stage/dev environment for example
+
+```c#
+GinPlatformSettings.ProtectionFromBeingRateLimited = false;
+GinPlatformSettings.GinPlatformUrl = "some-test-gin-platform-url";
+
+GinPlatformSettings.MaxRequestsPerMinute = 20; // to limit
+//or
+GinPlatformSettings.MaxRequestsPerMinute = Rules.MAX_REQUESTS_PER_MINUTE_API_THRESHOLD; // to set max performance per minute
+
+GinPlatformSettings.MaxRequestsPerSecond = 1; // to limit
+GinPlatformSettings.MaxRequestsPerSecond = Rules.MAX_REQUESTS_PER_SECOND_API_THRESHOLD; // to set max performance per second
+```
 
 If you like the SDK, consider a donation in GIN, which will allow me to test the SDK properly though making it more solid and reliable (as setting up nodes on the platform costs some GIN): <b>GebkJ4vC7pa5W5uesY5qst2svpS1xZCqjH</b>
