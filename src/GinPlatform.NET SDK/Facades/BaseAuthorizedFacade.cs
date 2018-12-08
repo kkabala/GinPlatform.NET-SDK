@@ -6,36 +6,42 @@ using System.Threading.Tasks;
 using GinPlatform.NET_SDK.Exceptions;
 using Newtonsoft.Json;
 
-namespace GinPlatform.NET_SDK.Clients
+namespace GinPlatform.NET_SDK.Facades
 {
-    public abstract class BaseAuthorizedClient : BaseClient
+    internal abstract class BaseAuthorizedFacade : BaseFacade
     {
-        protected Task<T> GetApiDataAuthorized<T>(HttpRequestMessage message, object httpRequestContent, string apiKey = null)
+        internal readonly string apiKey;
+
+        internal BaseAuthorizedFacade(string apiKey)
         {
-            SetAuthorizationHeader(apiKey);
+            this.apiKey = apiKey;
+        }
+
+        protected Task<T> GetApiDataAuthorized<T>(HttpRequestMessage message, object httpRequestContent)
+        {
+            SetAuthorizationHeader();
             message.Content = new StringContent(JsonConvert.SerializeObject(httpRequestContent), Encoding.UTF8, "application/json");
             return GetApiData<T>(message);
         }
 
-        protected Task<T> GetApiDataAuthorized<T>(HttpRequestMessage message, string apiKey = null)
+        protected Task<T> GetApiDataAuthorized<T>(HttpRequestMessage message)
         {
-            SetAuthorizationHeader(apiKey);
+            SetAuthorizationHeader();
             return GetApiData<T>(message);
         }
 
         private string GetApiKey(string passedApiKey)
         {
-            var key = String.IsNullOrEmpty(passedApiKey) ? GinPlatformSettings.ApiKey : passedApiKey;
-            if (String.IsNullOrEmpty(key))
+            if (String.IsNullOrEmpty(passedApiKey))
             {
                 throw new UnauthorizedException(
                     "The gincoin api key was not set up (neither directly, nor in the GinPlatformSettings class");
             }
 
-            return key;
+            return passedApiKey;
         }
 
-        protected void SetAuthorizationHeader(string apiKey)
+        protected void SetAuthorizationHeader()
         {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GetApiKey(apiKey));
         }

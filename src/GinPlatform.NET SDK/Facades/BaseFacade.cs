@@ -7,15 +7,15 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GinPlatform.NET_SDK.Clients
+namespace GinPlatform.NET_SDK.Facades
 {
-    public abstract class BaseClient : IDisposable
+    internal abstract class BaseFacade : IDisposable
     {
         protected readonly HttpClient httpClient;
         private static List<DateTime> apiRequestsTimes = new List<DateTime>();
         static bool wasRateLimited = false;
 
-        protected BaseClient()
+        protected BaseFacade()
         {
             httpClient = new HttpClient();
         }
