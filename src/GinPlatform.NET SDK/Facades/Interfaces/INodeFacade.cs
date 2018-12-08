@@ -8,7 +8,7 @@ namespace GinPlatform.NET_SDK.Facades.Interfaces
     public interface INodeFacade : IDisposable
     {
         Task<IEnumerable<Node>> GetAll();
-        Task<Node> GetDetails(string nodeId);
+        Task<Node> GetById(string nodeId);
         Task<Node> Create(NodeCreationData nodeCreationData);
         Task<bool> Delete(string nodeId);
         Task<bool> Upgrade(string nodeId);

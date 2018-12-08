@@ -18,7 +18,7 @@ namespace GinPlatform.NET_SDK.Facades
             return GetApiDataAuthorized<IEnumerable<Node>>(NodeRoutes.GetNodesList());
         }
 
-        public Task<Node> GetDetails(string nodeId)
+        public Task<Node> GetById(string nodeId)
         {
             return GetApiDataAuthorized<Node>(NodeRoutes.GetNodeDetails(nodeId));
         }
@@ -26,6 +26,11 @@ namespace GinPlatform.NET_SDK.Facades
         public Task<Node> Create(NodeCreationData nodeCreationData)
         {
             return GetApiDataAuthorized<Node>(NodeRoutes.GetCreateNode(), nodeCreationData);
+        }
+
+        public Task<Node> Update(NodeUpdate nodeUpdate)
+        {
+            return GetApiDataAuthorized<Node>(NodeRoutes.GetUpdateNode(nodeUpdate.Id), nodeUpdate);
         }
 
         public async Task<bool> Delete(string nodeId)

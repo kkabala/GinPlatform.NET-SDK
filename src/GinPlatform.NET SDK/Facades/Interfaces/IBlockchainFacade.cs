@@ -8,6 +8,6 @@ namespace GinPlatform.NET_SDK.Facades.Interfaces
     public interface IBlockchainFacade : IDisposable
     {
         Task<IEnumerable<Blockchain>> GetAll();
-        Task<Blockchain> GetDetails(string blockchainId);
+        Task<Blockchain> GetById(string blockchainId);
     }
 }

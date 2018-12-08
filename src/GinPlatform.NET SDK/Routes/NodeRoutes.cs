@@ -29,6 +29,11 @@ namespace GinPlatform.NET_SDK.Routes
             return new HttpRequestMessage(HttpMethod.Post, GetNodeRoute());
         }
 
+        internal static HttpRequestMessage GetUpdateNode(string nodeId)
+        {
+            return new HttpRequestMessage(HttpMethod.Post, GetNodeIdRoute(nodeId));
+        }
+
         internal static HttpRequestMessage GetDeleteNode(string nodeId)
         {
             return new HttpRequestMessage(HttpMethod.Delete, GetNodeIdRoute(nodeId));

@@ -13,7 +13,7 @@ namespace GinPlatform.NET_SDK.Facades
             return GetApiData<IEnumerable<Blockchain>>(BlockchainRoutes.GetBlockchainsList());
         }
 
-        public Task<Blockchain> GetDetails(string blockchainId)
+        public Task<Blockchain> GetById(string blockchainId)
         {
             return GetApiData<Blockchain>(BlockchainRoutes.GetBlockchainDetails(blockchainId));
         }
