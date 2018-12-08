@@ -13,5 +13,7 @@ namespace GinPlatform.NET_SDK.Facades.Interfaces
         Task<bool> Delete(string nodeId);
         Task<bool> Upgrade(string nodeId);
         Task<bool> Downgrade(string nodeId);
+        Task<bool> Rebuild(string nodeId);
+        Task<RewardsList> GetRewards(string nodeId, int pageNumber = 1);
     }
 }
