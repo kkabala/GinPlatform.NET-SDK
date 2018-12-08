@@ -5,11 +5,12 @@ namespace GinPlatform.NET_SDK
 {
     public class Client
     {
+        public static string ApiKey;
         private readonly string apiKey;
 
-        public Client(string apiKey)
+        public Client(string apiKey = null)
         {
-            this.apiKey = apiKey;
+            this.apiKey = apiKey ?? ApiKey;
         }
 
         private IBlockchainFacade blockchains;
