@@ -29,7 +29,7 @@ await client.User.GetTransactionsList(); //get current user's billing transactio
 ```
   
 Apart from that you have "GinPlatformSettings" class where you can:
-  - Disable protection from being rate limited (ProtectionFromBeingRateLimited property) - it's enabled by default. It protects you from being rate limited as when you reach requests limit and trying to send a rule breaking request, the SDK calculates and waits required time to send the request to GinPlatform. Remember that it bases on request sending time, not the time of receiving it by the GinPlatform, therefore with the protection you won't achieve maximum possible requests per second/minute ratio, but you can be sure that you won't be rate limited.
+  - Disable protection from being rate limited (ProtectionFromBeingRateLimited property) - it's enabled by default. It protects you from being rate limited as when you reach requests limit and trying to send a rule breaking request, the SDK calculates and waits required time to send the request to GinPlatform. Remember that it bases on request sending time, not the time of receiving it by the GinPlatform, therefore with the protection you won't achieve maximum possible requests per second/minute ratio, so you can be sure that you won't be rate limited.
   - Decrease/Increase your requests per second/minute limit - but the SDK won't allow you to set higher value than API limits. Requests per second are by default limited by half comparing to the API limit
   - Change GinPlatformUrl - not needed for now, but probably someday it'll be useful, for changing to stage/dev environment for example
 
