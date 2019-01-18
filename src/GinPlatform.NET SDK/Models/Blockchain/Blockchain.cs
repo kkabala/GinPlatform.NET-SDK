@@ -57,6 +57,6 @@ namespace GinPlatform.NET_SDK.Models.Blockchain
         public int Masternodes { get; set; }
 
         [JsonProperty("price")]
-        public double Price { get; set; }
+        public double? Price { get; set; }
     }
 }
